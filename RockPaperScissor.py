@@ -4,12 +4,25 @@ import random
 
 print("There will be 5 matches between you and your opponent")
 print("You have to enter: \n-'R' for Rock\n-'P' for Paper\n-'S'for Scissor")
-print()
-print("~ Let's Start ~")
+
+def replay():
+    print("1 Replay")
+    print("0 Exit")
+    choice = input("Enter: ")
+    if choice == '1':
+        return True
+    elif choice == '0':
+        print("~ Exit ~")
+        return False
+    else:
+        print("Invalid Input")
+        print()
+        return replay()
 
 def score(user_score, comp_score):
     print("Your Score: ", user_score)
     print("Opponent Score: ", comp_score)
+
     if user_score == comp_score:
         print("~ It's a Tie ~")
     elif user_score > comp_score:
@@ -18,6 +31,9 @@ def score(user_score, comp_score):
         print("~ You Lost ~")
 
 def game():
+    print()
+    print("~ Let's Start ~")
+
     n = 0
     user_score = 0
     comp_score = 0
@@ -49,6 +65,10 @@ def game():
             continue
 
     print()
-    score (user_score, comp_score)
+    score(user_score, comp_score)
+
+    print()
+    if replay():
+        game()
 
 game()
